@@ -1,0 +1,52 @@
+1-Inicialice el programa.
+2-Se verificará si existe el archivo inventario.db.
+  2.1-En el caso que no exista dicho archivo el programa lo creara en la carpeta.
+3-Se mostrará un menú de opciones.
+4-El usuario deberá ingresar un número entero para realizar operaciones.
+   
+   Menú de opciones
+   A-El menú contará con 6 operaciones diferentes:
+      
+      1-En la opción número 1 se realizará la consulta a la base de datos para ver si existen o no productos cargados.
+        1.1-Si hay datos cargados se mostrarán los datos de los productos(ID,Nombre,Descripción,Cantidad,Precio,Categoría).
+        1.2-Si no hay datos cargados se mostrará un mensaje advirtiendo que no hay datos cargados en la base de datos.
+      
+      2-En esta opción se podrán cargar los datos en la base de datos.
+        2.1-Se deberán cargar los datos pedidos en el formato correspondiente.
+        2.2-No se permitirán los campos vacios en la sección nombre y descripción.
+        2.3-La cantidad de producto debera ser un número entero y el precio un número real(ej 1200.00).
+
+      3-El usuario podra elegir entre dos opciones para eliminar por el nombre o por el id.
+        3.1.0-Se selecciona eliminar por nombre.
+        3.1.1-Se ingresará el nombre del producto a eliminar.
+        3.1.2-Se mostrará un mensaje si el producto existe o no y una advertencia de que si existen más de dos productos con el mismo nombre se eliminarán.
+        3.1.3-El programa le preguntará al usuario si quiere confirmar la operación.
+        3.1.4-Se confirmará o no la eliminación del producto dependiendo la decición que tomará el usuario.
+
+        3.2.0-Se seleccionará la opción de eliminar por el ID.
+        3.2.1-Se ingresará el ID del producto a eliminar.
+        3.2.2-Se mostrará un mensaje si el producto existe o no.
+        3.2.3-El programa le preguntará al usuario si quiere confirmar.
+        3.2.4-Se confirmará o no la eliminación del producto dependiendo la decisión del usuario.
+
+      4-Esta opción permitirá modificar los productos.
+        4.1-El usuario podra buscar el producto para modificar por el nombre o por el ID.
+        4.2-En caso de que elija la opción por nombre seleccionará el primer artículo con ese nombre.
+        4.3-En caso de que elija la opción por ID seleccionará el artículo en específico.
+        4.4-El usuario podra modificar los campos que desee por separado o todos los campos a la vez.
+        4.5-El programa confirmará la operacion si se cumplen con los tipos de datos requeridos.
+      
+      5-En esta operación el usuario podra buscar los productos que tiene por su nombre.
+        5.1-El usuario ingresará el nombre del producto que desea buscar.
+        5.2-El programa mostrará los productos que coinciden con el nombre ingresado.
+        5.2.1-El programa mostrará un mensaje si no hay productos asociados con el nombre ingresado.
+        5.3-El programa mostrará el mensaje para buscar otro producto o salir de la búsqueda.
+        5.4-Con la letra S o s se volverá al paso 5.1 , en el caso de que sea N o n volverá al menu principal.
+      
+      6-El programa solicitará al usuario cuál es la cantidad mínima de unidades que desee que muestre el reporte de productos.
+        6.1-El usuario ingresará un número entero.
+        6.2-El programa mostrará un reporte de los productos que tienen esa cantidad o menos de unidades.
+        6.3-En el caso de que el numero ingresado no existan productos igual o debajo de ese indice mostrará un mensaje.
+        6.4-El programa volverá al menú principal.
+
+5-El usuario deberá ingresar el número 9 para salir del programa el cúal mostrará un mensaje de salida.
