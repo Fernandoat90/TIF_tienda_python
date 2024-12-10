@@ -1,6 +1,6 @@
 import sqlite3
 
-conn=sqlite3.connect('./TIF_con_BD/inventario.db')
+conn=sqlite3.connect('inventario.db')
 
 cursor= conn.cursor()
 
@@ -29,28 +29,22 @@ def menu ():
 
 #Funcion de carga de categorias
 def categorias():
-    print("\nCategoría:\n\t1. Almacén.\n\t2. Bebidas.\n\t3. Lácteos.\n\t4. Congelados.\n\t5. Limpieza")
-    categoria = int(input("\nIngrese la categoría del producto: "))
-
+    
+    lista=["Almacén","Bebidas","Lácteos","Congelados","Limpieza"]
+    
     opcion = True
     while opcion:
-        if categoria == 1:
-            categoria = "Almacén"
+        
+        print("\nCategoría:\n\t1. Almacén.\n\t2. Bebidas.\n\t3. Lácteos.\n\t4. Congelados.\n\t5. Limpieza")
+        categoria = int(input("\nIngrese la categoría del producto: "))
+    
+        if categoria in [1,2,3,4,5]:
+        
+            categoria = lista[categoria-1]
             opcion = False
-        elif categoria == 2:
-            categoria = "Bebidas"
-            opcion = False
-        elif categoria == 3:
-            categoria = "Lácteos"
-            opcion = False
-        elif categoria == 4:
-            categoria = "Congelados"
-            opcion = False
-        elif categoria == 5:
-            categoria = "Limpieza"
-            opcion = False
+
         else:
-            print("Opción inválida.")
+            print("\nOpción inválida.")
             
     return categoria
 
