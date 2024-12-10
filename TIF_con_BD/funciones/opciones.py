@@ -38,6 +38,8 @@ def categorias():
         print("\nCategoría:\n\t1. Almacén.\n\t2. Bebidas.\n\t3. Lácteos.\n\t4. Congelados.\n\t5. Limpieza")
         categoria = int(input("\nIngrese la categoría del producto: "))
     
+        
+
         if categoria in [1,2,3,4,5]:
         
             categoria = lista[categoria-1]
@@ -129,15 +131,17 @@ def Eliminar_productos_id():
         
     if prod!=None:
             
-        print("\tID:",prod[0])
-        print("\tNombre:",prod[1])
-        print("\tDescripción:",prod[2])
-        print("\tCantidad:",prod[3],"unidades")
-        print("\tPrecio: $",prod[4])
-        print("\tCategoría:",prod[5])
-        pregunte = input(f"\n¿Está seguro de eliminar el producto {prod}? S=si o N=no: ")
-        
         while True:
+            
+            print("\nDatos del producto a eliminar:")
+            print("\n\tID:",prod[0])
+            print("\tNombre:",prod[1])
+            print("\tDescripción:",prod[2])
+            print("\tCantidad:",prod[3],"unidades")
+            print("\tPrecio: $",prod[4])
+            print("\tCategoría:",prod[5])
+            pregunte = input(f"\n¿Está seguro de eliminar el producto {prod[1]}? S=si o N=no: ")
+
             if pregunte in ["S", "s"]:
                 cursor.execute("DELETE FROM productos WHERE id = ?",(prod,))
                 conn.commit()
@@ -169,10 +173,9 @@ def Modificar_producto():
         cursor.execute("SELECT * FROM productos WHERE nombre = ?",(prod,))
         producto_modificar=cursor.fetchone()
         
-        
-        print("""\n\t1. Modificar nombre.\n\t2. Modificar descripcion. \n\t3. Modificar Stock. \n\t4. Modificar precio. \n\t5. Modificar categoria. \n\t6. Modicar todos los datos. \n""")
-        
         while True:
+
+            print("""\n\t1. Modificar nombre.\n\t2. Modificar descripcion. \n\t3. Modificar Stock. \n\t4. Modificar precio. \n\t5. Modificar categoria. \n\t6. Modicar todos los datos. \n""")
 
             try:
                 eleccion = int(input("Ingrese la opción que desee: "))
@@ -250,7 +253,7 @@ def Modificar_producto():
                     print("\nError. El stock y/o precio deben ser números.")
         
     else:
-        print("El producto no existe en la base de datos.")
+        print("\nEl producto no existe en la base de datos.")
 
 #Modificar producto por id
 def Modificar_producto_id():
@@ -261,11 +264,12 @@ def Modificar_producto_id():
 
     if producto:
         
-        print("\n\t1. Modificar nombre.\n\t2. Modificar descripcion.\n\t3. Modificar Stock\n\t4. Modificar precio.\n\t5. Modificar categoria.\n\t6. Modificar todos los datos.")
-        
         while True:
+
+            print("\n\t1. Modificar nombre.\n\t2. Modificar descripcion.\n\t3. Modificar Stock\n\t4. Modificar precio.\n\t5. Modificar categoria.\n\t6. Modificar todos los datos.")
+
             try:
-                eleccion = int(input("Ingrese la opción que desee: "))
+                eleccion = int(input("\nIngrese la opción que desee: "))
                 if eleccion not in [1, 2, 3, 4, 5, 6]:
                     print("\nOpción inválida. Por favor, ingrese una opción válida.\n")
                     continue
@@ -361,7 +365,7 @@ def buscar_producto():
         cursor.execute("SELECT * FROM productos WHERE nombre = ?",(producto_buscar,))
         producto_buscar=cursor.fetchall()
         
-        if producto_buscar!=None:
+        if producto_buscar:
             print("\nProducto encontrado:\n")
             for producto in producto_buscar:
                 print("\tNombre:",producto[1])
@@ -395,7 +399,7 @@ def reporte_bajo_stock():
             
             for reporte_final in reporte_bajo_stock:
                 print(f"\n ID: {reporte_final[0]},\n Producto: {reporte_final[1]},\n Descripción: {reporte_final[2]},\n Cantidad: {reporte_final[3]} unidades,\n Precio: ${reporte_final[4]},\n Categoría: {reporte_final[5]}")
-            print("------------------------")
+            print("------------------------\n")
 
         else:
             print("\nNo hay productos con stock bajo.")
