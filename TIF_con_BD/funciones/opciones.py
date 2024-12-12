@@ -359,7 +359,7 @@ def Modificar_producto_id():
 def buscar_producto():
     opcion=True
     
-    while opcion==True:
+    while opcion:
         
         producto_buscar=input("\nIngrese el nombre del producto a buscar: ").lower()
         cursor.execute("SELECT * FROM productos WHERE nombre = ?",(producto_buscar,))
@@ -376,11 +376,18 @@ def buscar_producto():
             
         else:
             print("\nProducto no encontrado.")
+        
+        while True:
+            consulta=input("\n¿Desea buscar otro producto? S:si o N:no : ")
 
-        consulta=input("\n¿Desea buscar otro producto? S:si o N:no : ")
+            if consulta in ["S","s"]:
+                break
+            elif consulta in ["N","n"]:
+                opcion=False
+                break
+            else:
+                print("\nOpción no válida. Por favor, ingrese S o N.")
 
-        if consulta in ["N","n"]:
-            opcion=False
 
 
 #Reporte bajo stock
@@ -392,14 +399,14 @@ def reporte_bajo_stock():
         reporte_bajo_stock=cursor.fetchall()
 
         if reporte_bajo_stock:
-            
-            print("\n------------------------")
-            print("Productos con stock bajo")
-            print("------------------------")
+            print(f"\n\nReporte de productos de {reporte_min} unidades o menos:")
+            print("\t------------------------")
+            print("\tProductos con stock bajo")
+            print("\t------------------------")
             
             for reporte_final in reporte_bajo_stock:
-                print(f"\n ID: {reporte_final[0]},\n Producto: {reporte_final[1]},\n Descripción: {reporte_final[2]},\n Cantidad: {reporte_final[3]} unidades,\n Precio: ${reporte_final[4]},\n Categoría: {reporte_final[5]}")
-            print("------------------------\n")
+                print(f"\n\t ID: {reporte_final[0]},\n\t Producto: {reporte_final[1]},\n\t Descripción: {reporte_final[2]},\n\t Cantidad: {reporte_final[3]} unidades,\n\t Precio: ${reporte_final[4]},\n\t Categoría: {reporte_final[5]}")
+            print("\t------------------------\n")
 
         else:
             print("\nNo hay productos con stock bajo.")
